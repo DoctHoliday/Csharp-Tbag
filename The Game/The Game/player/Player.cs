@@ -8,52 +8,130 @@ namespace The_Game.player
 {
     public class Player
     {
-        private String Name;
-        private int Hp;
-        private int Atk;
-        private int Gold;
+        private String name;
+        private int vitality;
+        private int hp;
+        private int atk;
+        private int gold;
 
-        public Player(String Name, int Hp, int Atk, int Gold)
+        public Player(String name, int vitality, int hp, int atk, int gold)
         {
-            this.Name = Name;
-            this.Hp = Hp;
-            this.Atk = Atk;
-            this.Gold = Gold;
+            Name = name;
+            Vitality = vitality;
+            Hp = hp;
+            Atk = atk;
+            Gold = gold;
         }
 
-        public String GetName() { return Name; }
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                if (value == null)
+                    throw new Exception("Name cannot be empty");
+                else
+                    name = value;
+            }
+        }
 
-        public int GetHp() { return Hp; }
+        public int Hp
+        {
+            get { return hp; }
+            set
+            {
+                if (value < 0)
+                    hp = 0;
+                else
+                    hp = value;
+            }
+        }
 
-        public int GetAtk() { return Atk; }
+        // Fix vitality, think I'm stupid
+        public int Vitality
+        {
+            get { return vitality; }
+            set
+            {
+                if (value < 0)
+                    Vitality = vitality;
+                else
+                    Vitality = value;
+            }
+        }
 
-        public int GetGold() { return Gold; }
+        public int Atk
+        {
+            get { return Atk; }
+            set
+            {
+                Atk = value;
+            }
+        }
 
-        public void SetName(String Name) { this.Name = Name; }
-        
-        public void SetHp(int Hp) { this.Hp = Hp; }
-
-        public void SetAtk(int Atk) { this.Atk = Atk; }
-
-        public void SetGold(int Gold) { this.Gold = Gold; }
+        public int Gold
+        {
+            get { return gold; }
+            set 
+            {
+                if (value < 0)
+                    Gold = 0;
+                else
+                    Gold = value;
+            }
+        }
 
         public String GetStats()
         {
-            return String.Format("Name: {0}, Health: {1}, Attack: {2}, Gold: {3}", GetName(), GetHp(), GetAtk(), GetGold());
+            return String.Format("Name: {0}, Health: {1}, Attack: {2}, Gold: {3}", Name, Hp, Atk, Gold);
+        }
+
+        public void IncreaseVitality(int amount)
+        {
+            if (amount < 0)
+                throw new ArgumentOutOfRangeException("Cannot increase vitality by negative");
+            else
+                Vitality += amount;
+        }
+
+        public void RestoreHp(int amount)
+        {
+            if (Hp + amount >= Vitality)
+                Hp = Vitality;
+            else
+                Hp += amount;
+        }
+
+        public void DiminishHp(int amount)
+        {
+            if (Hp - amount <= 0)
+                Hp = 0;
+            else
+                Hp -= amount;
+        }
+
+        public void LevelAtk(int amount)
+        {
+            if (amount < 0)
+                throw new ArgumentOutOfRangeException("Cannot level up a character negatively");
+            else
+                Atk += amount;
         }
 
         public void IncreaseGold(int amount)
         {
             if (amount < 0)
-                throw new ArgumentOutOfRangeException("Amount is less than 0");
-           SetGold(Gold += amount);
+                throw new ArgumentOutOfRangeException("Amount is less than 0, cannot increase gold");
+            else
+                Gold += amount;
         }
 
         public void RemoveGold(int amount)
         {
-            if (Gold < 0)
-                throw new ArgumentOutOfRangeException("Current gold is less than 0, cannot go negative");
-            SetGold(Gold -= amount);
+            if (Gold - amount <= 0)
+                Gold = 0;
+            else
+                Gold -= amount;
         }
     }
 }
