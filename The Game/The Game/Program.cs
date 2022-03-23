@@ -17,7 +17,7 @@ namespace The_Game
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new MainForm());
 
-            Player player = new Player("Name", 10, 10, 10);
+            Player player = new Player("Name", 10, 10, 10, 10);
             Console.WriteLine(player.GetStats());
             Console.ReadKey();
         }
