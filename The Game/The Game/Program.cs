@@ -13,13 +13,13 @@ namespace The_Game
     {
         static void Main(string[] args)
         {
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MainForm());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainForm());
 
-            Player player = new Player("Name", 10, 10, 10, 10);
-            Console.WriteLine(player.GetStats());
-            Console.ReadKey();
+            //Player player = new Player("Name", 10, 10, 10, 10);
+            //Console.WriteLine(player.GetStats());
+            //Console.ReadKey();
         }
     }
 }

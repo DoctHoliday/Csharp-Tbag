@@ -95,7 +95,7 @@ namespace PlayerTests
             int hp = 2;
             int vitality = 10;
             int expectedAmount = vitality;
-            Player player = new Player("Name", hp, vitality, 10, 10);
+            Player player = new Player("Name", vitality, hp, 10, 10);
 
             // Act
             player.RestoreHp(8);
@@ -112,7 +112,7 @@ namespace PlayerTests
             int hp = 2;
             int vitality = 10;
             int expectedAmount = vitality;
-            Player player = new Player("Name", hp, vitality, 10, 10);
+            Player player = new Player("Name", vitality, hp, 10, 10);
 
             // Act
             player.RestoreHp(9);
@@ -128,7 +128,7 @@ namespace PlayerTests
             // Arrange
             int hp = 2;
             int expectedAmount = 0;
-            Player player = new Player("Name", hp, 10, 10, 10);
+            Player player = new Player("Name", 10, hp, 10, 10);
 
             // Act
             player.DiminishHp(2);
@@ -144,7 +144,7 @@ namespace PlayerTests
             // Arrange
             int hp = 2;
             int expectedAmount = 0;
-            Player player = new Player("Name", hp, 10, 10, 10);
+            Player player = new Player("Name", 10, hp, 10, 10);
 
             // Act
             player.DiminishHp(5);

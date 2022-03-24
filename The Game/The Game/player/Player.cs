@@ -38,52 +38,31 @@ namespace The_Game.player
         public int Hp
         {
             get { return hp; }
-            set
-            {
-                if (value < 0)
-                    hp = 0;
-                else
-                    hp = value;
-            }
+            set { hp = value; }
         }
 
         // Fix vitality, think I'm stupid
         public int Vitality
         {
             get { return vitality; }
-            set
-            {
-                if (value < 0)
-                    Vitality = vitality;
-                else
-                    Vitality = value;
-            }
+            set { vitality = value; }
         }
 
         public int Atk
         {
-            get { return Atk; }
-            set
-            {
-                Atk = value;
-            }
+            get { return atk; }
+            set { atk = value; }
         }
 
         public int Gold
         {
             get { return gold; }
-            set 
-            {
-                if (value < 0)
-                    Gold = 0;
-                else
-                    Gold = value;
-            }
+            set { gold = value; }
         }
 
         public String GetStats()
         {
-            return String.Format("Name: {0}, Health: {1}, Attack: {2}, Gold: {3}", Name, Hp, Atk, Gold);
+            return String.Format("Name: {0}, Vitality: {1}, Health: {2}, Attack: {3}, Gold: {4}", Name, Vitality, Hp, Atk, Gold);
         }
 
         public void IncreaseVitality(int amount)
