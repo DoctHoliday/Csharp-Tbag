@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using FluentValidation.Results;
 
 using The_Game.handlers;
-using The_Game.player;
+using The_Game.models.player;
 
 namespace The_Game
 {
@@ -48,7 +48,7 @@ namespace The_Game
                     MessageBox.Show("Property: '" + error.PropertyName + "' " + error.ErrorMessage);
             else
             {
-                fileHandler.createPlayer(playerNameSubmission.Text);
+                fileHandler.CreatePlayer(playerNameSubmission.Text);
                 ParentWindow.tempName = playerNameSubmission.Text;
                 this.Dispose();
             }

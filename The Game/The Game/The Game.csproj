@@ -75,14 +75,16 @@
       <DependentUpon>CreateDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="handlers\FileHandler.cs" />
+    <Compile Include="handlers\NPCHandler.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="player\Player.cs" />
-    <Compile Include="player\PlayerNameValidator.cs" />
+    <Compile Include="models\npc\NPC.cs" />
+    <Compile Include="models\player\Player.cs" />
+    <Compile Include="models\player\PlayerNameValidator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
