@@ -13,12 +13,12 @@ namespace The_Game.handlers
     {
 
         private static readonly string data = @"../../data/npcs.csv";
-        public static List<NPC> npcList = new List<NPC>();
+        private static List<NPC> npcList = new List<NPC>();
+        public static List<NPC> spawnedList = new List<NPC>();
 
         public static void LoadNPCS()
         {
-            var lines = File.ReadAllLines(data)
-                .Skip(1);
+            var lines = File.ReadAllLines(data).Skip(1);
             foreach (string npc in lines)
             {
                 var info = npc.Split('\u002C');
@@ -39,6 +39,19 @@ namespace The_Game.handlers
         {
             MessageBox.Show(npcList.ElementAt(id).GetStats());
         }
+
+        public static void SpawnNPC(int id) 
+        { 
+            spawnedList.Add(npcList.ElementAt(id));
+        }
+
+        public static void WhoSpawned()
+        {
+            for (int i = 0; i < spawnedList.Count; i++)
+                Console.WriteLine(spawnedList[i].GetStats());
+        }
+
+
 
     }
 }

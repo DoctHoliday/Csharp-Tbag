@@ -121,7 +121,6 @@
             this.UserInput.Size = new System.Drawing.Size(588, 20);
             this.UserInput.TabIndex = 3;
             this.UserInput.WordWrap = false;
-            this.UserInput.TextChanged += new System.EventHandler(this.userInput_TextChanged);
             // 
             // MainForm
             // 

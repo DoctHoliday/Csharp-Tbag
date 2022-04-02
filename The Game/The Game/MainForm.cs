@@ -29,9 +29,15 @@ namespace The_Game
         public MainForm()
         {
             InitializeComponent();
-            NPCHandler.LoadNPCS();
             this.UserInput.KeyDown += new KeyEventHandler(this.UserInput_KeyDown);
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.saveToolStripMenuItem.Enabled = false;
+
+            NPCHandler.LoadNPCS();
+
+
+
             stopwatch.Start();
         }
 
@@ -47,11 +53,6 @@ namespace The_Game
                 k.Handled = true;
                 k.SuppressKeyPress = true;
             }
-        }
-
-        private void userInput_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void mainConsole_TextChanged(object sender, EventArgs e)
@@ -82,6 +83,7 @@ namespace The_Game
                 {
                     string filePath = openFileDialog.FileName;
                     player = JsonConvert.DeserializeObject<Player>(File.ReadAllText(filePath));  
+                    this.saveToolStripMenuItem.Enabled = true;
                 }
             }
         }
@@ -91,6 +93,10 @@ namespace The_Game
             fileHandler.SavePlayer(player);
             MessageBox.Show(player.Name + " has been saved!");
             NPCHandler.WhoDis(0);
+            NPCHandler.SpawnNPC(0);
+            NPCHandler.SpawnNPC(1);
+            NPCHandler.SpawnNPC(1);
+            NPCHandler.WhoSpawned();
         }
         #endregion
     }
