@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace The_Game.player
+namespace The_Game.models.player
 {
     public class Player
     {

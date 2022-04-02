@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using The_Game.player;
+using The_Game.models.player;
 
 namespace PlayerTests
 {
