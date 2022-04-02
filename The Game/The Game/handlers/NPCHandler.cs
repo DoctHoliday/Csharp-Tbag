@@ -9,40 +9,35 @@ using The_Game.models.npc;
 
 namespace The_Game.handlers
 {
-    public class NPCHandler
+    public static class NPCHandler
     {
 
-        private readonly string data = @"../../data/npcs.csv";
+        private static readonly string data = @"../../data/npcs.csv";
+        public static List<NPC> npcList = new List<NPC>();
 
-        //File.ReadAllLines(data)
-        //    .Skip(1)
-        //    .Select(x => NPCHandler.LoadNPCS(x))
-        //    .ToList();
-
-        public void LoadNPCS()
+        public static void LoadNPCS()
         {
-            List<NPC> list = File.ReadAllLines(data)
-                .Skip(1)
-                .Select(line => ReadFromCSV(line))
-                .ToList();
+            var lines = File.ReadAllLines(data)
+                .Skip(1);
+            foreach (string npc in lines)
+            {
+                var info = npc.Split('\u002C');
+                npcList.Add(item: new NPC()
+                {
+                    ID = int.Parse(info[0]),
+                    Name = info[1],
+                    HP = int.Parse(info[2]),
+                    Atk = int.Parse(info[3]),
+                    Def = int.Parse(info[4]),
+                    Desc = info[5]
+                });
+
+            }
         }
 
-        public NPC ReadFromCSV(string line)
+        public static void WhoDis(int id)
         {
-            string[] vs = line.Split('\u002C');
-            NPC npc = null;
-            npc.ID = int.Parse(vs[0]);
-            npc.Name = vs[1];
-            npc.HP = int.Parse(vs[2]);
-            npc.Atk = int.Parse(vs[3]);
-            npc.Def = int.Parse(vs[4]);
-            npc.Desc = vs[5];
-            return npc;
-        }
-
-        public void WhoDis(int id)
-        {
-            //MessageBox.Show(list.ElementAt(id).GetStats());
+            MessageBox.Show(npcList.ElementAt(id).GetStats());
         }
 
     }

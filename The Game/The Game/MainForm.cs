@@ -29,6 +29,7 @@ namespace The_Game
         public MainForm()
         {
             InitializeComponent();
+            NPCHandler.LoadNPCS();
             this.UserInput.KeyDown += new KeyEventHandler(this.UserInput_KeyDown);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             stopwatch.Start();
@@ -89,6 +90,7 @@ namespace The_Game
         {
             fileHandler.SavePlayer(player);
             MessageBox.Show(player.Name + " has been saved!");
+            NPCHandler.WhoDis(0);
         }
         #endregion
     }
